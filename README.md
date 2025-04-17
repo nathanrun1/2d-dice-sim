@@ -9,8 +9,8 @@ being non-deterministic (and me not knowing this at the time), the results were 
 I recently decided to re-explore this, but this time with a much lower level implementation. I'm currently interested in learning graphics programming with low level graphics APIs, so I decided to use Vulkan and run my own custom physics simulations.
 Currently, the simulations use the [Box2D](https://box2d.org/) physics library for 2D physics. This library is not deterministic, but it is accurate enough for an individual dice roll. I aim to expand on this by writing my own 2D physics engine and integrating it into this program, but for now Box2D is used.
 
-A lot of the application code was done by following [this youtube tutorial series](https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR), up until the implementation of camera view transforms.
-I modified the code so that it uses orthographic projection (necessary for 2D), and implemented additional [RigidBody](https://github.com/nathanrun1/2d-dice-sim/blob/main/DiceSimulation/src/dicesim_rigidbody.hpp) and [PhysicsWorld](https://github.com/nathanrun1/2d-dice-sim/blob/main/DiceSimulation/src/dicesim_physics_world.hpp) classes to integrate the 2D physics.
+A lot of the application code was done by following [this youtube tutorial series](https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR), up until the implementation of camera [view transform](https://www.youtube.com/watch?v=rvJHkYnAR3w).
+I modified the code so that it uses [orthographic projection](https://www.britannica.com/technology/orthographic-projection-engineering) (necessary for 2D), and implemented additional [RigidBody](https://github.com/nathanrun1/2d-dice-sim/blob/main/DiceSimulation/src/dicesim_rigidbody.hpp) and [PhysicsWorld](https://github.com/nathanrun1/2d-dice-sim/blob/main/DiceSimulation/src/dicesim_physics_world.hpp) classes to integrate the 2D physics.
 
 ## Current Results
 
