@@ -20,3 +20,9 @@ To be able to properly analyse how the unfair shape of the dice relates to the p
 The dice vertices are currently modifiable in the dicesim_app.cpp file under the loadDice() function.
 
 https://github.com/user-attachments/assets/14298dc7-b85b-4701-ab0b-37e325dc87b9
+
+## Future Plans
+
+- Implement automatic dice rolls at various starting rotations to quickly calculate the probability of each dice roll result for quick analysis.
+- Implement 3D physics with the Jolt Physics library to be able to use this with the originally intended 6-sided die (and then other arbitrary shapes)
+- Implement custom deterministic 3D physics calculations as an additional challenge to improve my knowledge in creating physics engines and Vulkan in general.
