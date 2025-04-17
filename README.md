@@ -11,7 +11,7 @@ Currently, the simulations use the Box2D physics library for 2D physics. This li
 it into this program, but for now Box2D is used.
 
 A lot of the application code was done by following [this youtube tutorial series](https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR), up until the implementation of camera view transforms.
-I modified the code so that it uses orthographic projection (necessary for 2D), and implemented additional RigidBody and PhysicsWorld classes to integrate the 2D physics.
+I modified the code so that it uses orthographic projection (necessary for 2D), and implemented additional [RigidBody](https://github.com/nathanrun1/2d-dice-sim/blob/main/DiceSimulation/src/dicesim_rigidbody.hpp) and [PhysicsWorld](https://github.com/nathanrun1/2d-dice-sim/blob/main/DiceSimulation/src/dicesim_physics_world.hpp) classes to integrate the 2D physics.
 
 ## Current Results
 
