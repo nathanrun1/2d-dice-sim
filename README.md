@@ -7,7 +7,7 @@ For this project, I initially created a Unity program that simulates some arbitr
 being non-determinstic (and me not realizing this), the results were not accurate.
 
 I recently decided to re-explore this, but this time at a much lower level. I'm currently interested in learning graphics programming with low level graphics APIs, so I decided to use Vulkan and run my own custom physics simulations.
-Currently, the simulations use the Box2D physics library for 2D physics. This library is not deterministic, but it is accurate enough for an individual dice roll. I aim to expand on this by writing my own 2D physics engine and integrating
+Currently, the simulations use the [Box2D](https://box2d.org/) physics library for 2D physics. This library is not deterministic, but it is accurate enough for an individual dice roll. I aim to expand on this by writing my own 2D physics engine and integrating
 it into this program, but for now Box2D is used.
 
 A lot of the application code was done by following [this youtube tutorial series](https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR), up until the implementation of camera view transforms.
@@ -24,5 +24,5 @@ https://github.com/user-attachments/assets/14298dc7-b85b-4701-ab0b-37e325dc87b9
 ## Future Plans
 
 - Implement automatic dice rolls at various starting rotations to quickly calculate the probability of each dice roll result for quick analysis.
-- Implement 3D physics with the Jolt Physics library to be able to use this with the originally intended 6-sided die (and then other arbitrary shapes)
+- Implement 3D physics with the [Jolt Physics](https://github.com/jrouwe/JoltPhysics) library to be able to use this with the originally intended 6-sided die (and then other arbitrary shapes)
 - Implement custom deterministic 3D physics calculations as an additional challenge to improve my knowledge in creating physics engines and Vulkan in general.
