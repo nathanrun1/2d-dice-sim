@@ -6,17 +6,17 @@
 
 namespace dice {
 
-	DiceSimRigidBody::DiceSimRigidBody(b2WorldId& worldId, DiceSimGameObject& gameObject, TransformComponent& initialTransform, b2Polygon& shape, bool isDynamic)
-		: gameObject_{ gameObject }, worldId_ { worldId }, isDynamic_{ isDynamic } {
-
-		gameObject.transform = initialTransform;
+	DiceSimRigidBody::DiceSimRigidBody(b2WorldId worldId, DiceSimRigidBodyConfigInfo& configInfo)
+		: gameObject_{ *configInfo.pGameObject }, worldId_ { worldId }, isDynamic_{ configInfo.isDynamic } {
+		
+		gameObject_.transform = *configInfo.pTransform;
 
 		b2BodyDef bodyDef = b2DefaultBodyDef();
-		bodyDef.position = { initialTransform.translation.x, -initialTransform.translation.y };
-		bodyDef.rotation = b2MakeRot(initialTransform.rotation.z);
-		if (isDynamic) bodyDef.type = b2_dynamicBody;
+		bodyDef.position = { configInfo.pTransform->translation.x, -configInfo.pTransform->translation.y };
+		bodyDef.rotation = b2MakeRot(configInfo.pTransform->rotation.z);
+		if (isDynamic_) bodyDef.type = b2_dynamicBody;
 
-		bodyId_ = b2CreateBody(worldId, &bodyDef);
+		bodyId_ = b2CreateBody(worldId_, &bodyDef);
 
 		b2SurfaceMaterial material = b2DefaultSurfaceMaterial();
 		material.friction = 0.0f;
@@ -25,12 +25,12 @@ namespace dice {
 		b2ShapeDef shapeDef = b2DefaultShapeDef();
 		shapeDef.material = material;
 		shapeDef.density = 5.0f;
-		if (isDynamic) {
+		if (isDynamic_) {
 			// Arbitrary default density and friction values
 			shapeDef.density = 1.0f;
 		}
 
-		b2CreatePolygonShape(bodyId_, &shapeDef, &shape);
+		b2CreatePolygonShape(bodyId_, &shapeDef, configInfo.pShape);
 	}
 
 	void DiceSimRigidBody::update() {

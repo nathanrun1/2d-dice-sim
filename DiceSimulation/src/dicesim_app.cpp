@@ -165,7 +165,7 @@ namespace dice {
         // Vertices defining dice quadrilateral, ordered top right to bottom right (same as cartesian quadrant order)
         std::vector<glm::vec2> diceQuadVertices = {
             {6.f, -3.f},
-            {-3.f, -3.f},
+            {-2.f, -3.f},
             {-3.f, 3.f},
             {3.f, 2.f}
         };
@@ -190,10 +190,16 @@ namespace dice {
         auto diceGameObject = DiceSimGameObject::createGameObject();
         diceGameObject.transform = diceTransform;
         diceGameObject.model = diceModel;
-        gameObjects.push_back(std::move(diceGameObject));
+        gameObjects.push_back(std::make_shared<DiceSimGameObject>(std::move(diceGameObject)));
 
         // Create the dynamic rigidbody
-        diceRigidBody = diceSimPhysicsWorld.addRigidBody(gameObjects.back(), diceTransform, dicePolygon, true);
+        DiceSimRigidBodyConfigInfo rigidBodyInfo{};
+        rigidBodyInfo.pGameObject = gameObjects.back().get();
+        rigidBodyInfo.pTransform = &diceTransform;
+        rigidBodyInfo.pShape = &dicePolygon;
+        rigidBodyInfo.isDynamic = true;
+
+        diceRigidBody = diceSimPhysicsWorld.createRigidBody(rigidBodyInfo);
     }
 
     void DiceSimApp::loadGround() {
@@ -211,10 +217,16 @@ namespace dice {
         auto groundGameObject = DiceSimGameObject::createGameObject();
         groundGameObject.transform = groundTransform;
         groundGameObject.model = groundModel;
-        gameObjects.push_back(std::move(groundGameObject));
+        gameObjects.push_back(std::make_shared<DiceSimGameObject>(std::move(groundGameObject)));
+
+        DiceSimRigidBodyConfigInfo rigidBodyInfo{};
+        rigidBodyInfo.pGameObject = gameObjects.back().get();
+        rigidBodyInfo.pTransform = &groundTransform;
+        rigidBodyInfo.pShape = &groundPolygon;
+        rigidBodyInfo.isDynamic = false;
 
         // Create the static rigidbody
-        diceSimPhysicsWorld.addRigidBody(groundGameObject, groundTransform, groundPolygon, false);
+        diceSimPhysicsWorld.createRigidBody(rigidBodyInfo);
     }
 
     void DiceSimApp::loadGameObjects() {

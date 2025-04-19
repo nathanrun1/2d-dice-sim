@@ -63,7 +63,7 @@ namespace dice {
 
     void SimpleRenderSystem::renderGameObjects(
         VkCommandBuffer commandBuffer,
-        std::vector<DiceSimGameObject>& gameObjects,
+        std::vector<std::shared_ptr<DiceSimGameObject>>& gameObjects,
         const DiceSimCamera& camera) {
         diceSimPipeline->bind(commandBuffer);
 
@@ -74,8 +74,8 @@ namespace dice {
             obj.transform.rotation.x = glm::mod(obj.transform.rotation.x + 0.005f, glm::two_pi<float>());*/
 
             SimplePushConstantData push{};
-            push.color = obj.color;
-            push.transform = projectionView * obj.transform.mat4();
+            push.color = obj->color;
+            push.transform = projectionView * obj->transform.mat4();
             /*std::cout << "y pos rendered: " << obj.transform.translation.y << std::endl;
             std::cout << "gameobject rendered from adr: " << &obj << std::endl;*/
 
@@ -86,8 +86,8 @@ namespace dice {
                 0,
                 sizeof(SimplePushConstantData),
                 &push);
-            obj.model->bind(commandBuffer);
-            obj.model->draw(commandBuffer);
+            obj->model->bind(commandBuffer);
+            obj->model->draw(commandBuffer);
         }
     }
 

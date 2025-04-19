@@ -10,10 +10,19 @@
 #include <cmath>
 
 namespace dice {
+
+	struct DiceSimRigidBodyConfigInfo {
+		DiceSimGameObject* pGameObject;
+		TransformComponent* pTransform;
+		b2Polygon* pShape;
+		bool isDynamic;
+	};
+
+
 	class DiceSimRigidBody {
 	public:
 
-		DiceSimRigidBody(b2WorldId& worldId, DiceSimGameObject& gameObject, TransformComponent& initialTransform, b2Polygon& shape, bool isDynamic = false);
+		DiceSimRigidBody(b2WorldId worldId, DiceSimRigidBodyConfigInfo& configInfo);
 
 		DiceSimRigidBody(const DiceSimRigidBody&) = delete;
 		DiceSimRigidBody& operator=(const DiceSimRigidBody&) = delete;

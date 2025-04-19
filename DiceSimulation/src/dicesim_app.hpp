@@ -41,6 +41,6 @@ namespace dice {
 
 		std::weak_ptr<DiceSimRigidBody> diceRigidBody;
 
-		std::vector<DiceSimGameObject> gameObjects;
+		std::vector<std::shared_ptr<DiceSimGameObject>> gameObjects;
 	};
 }  // namespace dice

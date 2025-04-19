@@ -16,13 +16,8 @@ namespace dice {
 		return worldId_;
 	}
 
-	std::weak_ptr<DiceSimRigidBody> DiceSimPhysicsWorld::addRigidBody(DiceSimGameObject& gameObject, TransformComponent& transform, b2Polygon& shape, bool isDynamic) {
-		auto rigidBodyPtr = std::make_shared<DiceSimRigidBody>(
-			worldId_, 
-			gameObject, 
-			transform, 
-			shape, 
-			isDynamic);
+	std::weak_ptr<DiceSimRigidBody> DiceSimPhysicsWorld::createRigidBody(DiceSimRigidBodyConfigInfo& configInfo) {
+		auto rigidBodyPtr = std::make_shared<DiceSimRigidBody>(worldId_, configInfo);
 		
 		rigidbodies_.push_back(rigidBodyPtr);
 		return rigidBodyPtr;

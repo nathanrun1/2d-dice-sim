@@ -18,7 +18,7 @@ namespace dice {
 
 		b2WorldId& worldId();
 
-		std::weak_ptr<DiceSimRigidBody> addRigidBody(DiceSimGameObject& gameObject, TransformComponent& transform, b2Polygon& shape, bool isDynamic = false);
+		std::weak_ptr<DiceSimRigidBody> createRigidBody(DiceSimRigidBodyConfigInfo& configInfo);
 		void step(float timeStep, int subStepCount);
 	private:
 		b2WorldId worldId_;

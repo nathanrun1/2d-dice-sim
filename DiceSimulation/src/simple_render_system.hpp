@@ -20,7 +20,7 @@ namespace dice {
 
         void renderGameObjects(
             VkCommandBuffer commandBuffer,
-            std::vector<DiceSimGameObject>& gameObjects,
+            std::vector<std::shared_ptr<DiceSimGameObject>>& gameObjects,
             const DiceSimCamera& camera);
 
     private:
