@@ -230,8 +230,6 @@ namespace dice {
     }
 
     void DiceSimApp::loadGameObjects() {
-        gameObjects.reserve(2); // TEMP: doing this to ensure rigidbody gameobject references are preserved (they become invalid on std::vector reallocate)
-        // TODO: refactor system so that gameObjects vector can be resized without affecting rigidbody's gameobject reference
         loadDice();
         loadGround();
     }
