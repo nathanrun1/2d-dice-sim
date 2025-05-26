@@ -18,7 +18,7 @@ The program currently renders a simple 2D scene, with a 4-sided "dice" and a sur
 To be able to properly analyse how the unfair shape of the dice relates to the probability of the sides, I allow the vertices defining the dice to be customized, which gives the ability to create any arbitrary quadrilateral.
 The dice vertices are currently modifiable in the dicesim_app.cpp file under the loadDice() function.
 
-The scene also uses a [coefficient of restitution](https://en.wikipedia.org/wiki/Coefficient_of_restitution) of 0 (i.e. no bouncing), as this is an property of the dice rolls in my initial project that I assume for simplicity.
+The scene also uses a [coefficient of restitution](https://en.wikipedia.org/wiki/Coefficient_of_restitution) of 0 (i.e. no bouncing), as this is a property of the dice rolls in my initial project that I assume for simplicity.
 
 https://github.com/user-attachments/assets/14298dc7-b85b-4701-ab0b-37e325dc87b9
 
